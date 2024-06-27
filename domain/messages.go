@@ -2,6 +2,20 @@ package domain
 
 import "strings"
 
+// Method represents an lanaguage server method.
+type Method string
+
+// String returns the string representation of the method
+func (m Method) String() string {
+	return string(m)
+}
+
+// Prefix returns true if the method starts with the input
+// given as a string.
+func (m Method) Prefix(input string) bool {
+	return strings.HasPrefix(string(m), input)
+}
+
 // Request is a request to a language server.
 //
 // Microsoft LSP Docs:
@@ -45,15 +59,22 @@ type Notification struct {
 	Method string `json:"method"`
 }
 
-// Method represents an lanaguage server method.
-type Method string
-
-// String returns the string representation of the method
-func (m Method) String() string {
-	return string(m)
-}
-
-// Prefix returns true if the method starts with the input
-func (m Method) Prefix(input string) bool {
-	return strings.HasPrefix(string(m), input)
+// LineRange returns a range of a line in a document
+//
+// line is the line number
+//
+// start is the start character of the range
+//
+// end is the end character of the range
+func LineRange(line, start, end int) Range {
+	return Range{
+		Start: Position{
+			Line:      line,
+			Character: start,
+		},
+		End: Position{
+			Line:      line,
+			Character: end,
+		},
+	}
 }

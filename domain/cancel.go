@@ -1,5 +1,13 @@
 package domain
 
+const (
+	// CancelRequestMethod is the cancel request method for the language server protocol.
+	//
+	// Microsoft LSP Docs:
+	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
+	CancelRequestMethod Method = "$/cancelRequest"
+)
+
 // CancelRequest is sent from the client to the server to cancel a request.
 type CancelRequest struct {
 	// CancelRequest embeds the Request struct
@@ -24,11 +32,3 @@ type CancelResponse struct {
 	// CancelResponse embeds the Response struct
 	Response
 }
-
-var (
-	// CancelRequestMethod is the cancel request method for the language server protocol.
-	//
-	// Microsoft LSP Docs:
-	// https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_cancel
-	CancelRequestMethod Method = "$/cancelRequest"
-)

@@ -12,7 +12,7 @@ type Message[
 	// ID is the id of the message.
 	ID *int `json:"id,omitempty"`
 	// Params is the params of the message.
-	Params T `json:"params,omitempty"`
+	Params *T `json:"params,omitempty"`
 	// Method is the method of the message.
 	Method *Method `json:"method,omitempty"`
 }

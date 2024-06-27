@@ -1,9 +1,9 @@
-package glisp
+package golf
 
 import (
 	"sync"
 
-	"github.com/conneroisu/glisp/domain"
+	"github.com/conneroisu/golf/domain"
 )
 
 // HandlerFunc is a function that handles a request by returning a function
@@ -16,7 +16,7 @@ type Handler interface {
 
 // ServeRPC serves a request
 func (f HandlerFunc) ServeRPC(w ResponseWriter, r *domain.Request) {
-	f.ServeRPC(w, r)
+	f(w, r)
 }
 
 // ResponseWriter is a writer for a response it implements the io.Writer

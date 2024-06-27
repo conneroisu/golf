@@ -1,23 +1,29 @@
 package main
 
 import (
-	"github.com/conneroisu/glisp"
-	"github.com/conneroisu/glisp/domain"
+	"fmt"
+
+	"github.com/conneroisu/golf"
+	"github.com/conneroisu/golf/domain"
 )
 
 // newR returns a new rename handler
-func newR() glisp.HandlerFunc {
-	return func(w glisp.ResponseWriter, r *domain.Request) {
+func newR() golf.HandlerFunc {
+	return func(w golf.ResponseWriter, r *domain.Request) {
+		// TODO: Implement Rename
+		fmt.Println("Rename Request Received" + r.Method)
+		fmt.Println("writer:", w)
 	}
 }
 
 // main is the entry point for the server
 func main() {
-	server := glisp.DefaultMux
+	server := golf.DefaultMux
 
 	AddRoutes(server)
 }
 
-func AddRoutes(server *glisp.ServeMux) {
+// AddRoutes adds the routes to the server
+func AddRoutes(server *golf.ServeMux) {
 	server.Handle(domain.MethodTextDocumentRename, newR())
 }
